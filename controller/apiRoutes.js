@@ -2,6 +2,9 @@ const router = require('express').Router();
 const db = require('../models');
 
 // GET ALL WORKOUTS
+// TODO: Add otalDuration: lastWorkout.totalDuration,
+    //   numExercises: lastWorkout.exercises.length,
+
 router.get("/workouts", async (req,res)=>{
     try{
         const workoutData = await db.Workout.find({});
