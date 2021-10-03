@@ -4,7 +4,7 @@
 ## Description
 This is a full-stack workout tracker featuring mongoDB / Mongoose. It allows you to add exercises to workouts, which are then aggregated into graphs. 
 
-See deployed app [here](https://protected-tor-62513.herokuapp.com/).
+See deployed app [here](https://dry-basin-79854.herokuapp.com/).
 ![screenshot](./assets/home-screenshot.png)
 
 ## Table of Contents 
@@ -32,7 +32,7 @@ If you want to run this locally on your machine:
 * Go to http://localhost:3000/ to use the application
 
 ## Usage
-See deployed app [here](https://protected-tor-62513.herokuapp.com/)
+See deployed app [here](https://dry-basin-79854.herokuapp.com/)
 
 1. If there is an existing workout, you can either add exercises to it (by pressing Continue) or create a new workout altogether
 2. When you are adding exercises, you can either choose cardio / resistance training
