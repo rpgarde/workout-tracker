@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const db = require('../models');
 
-// GET ALL WORKOUTS
-
+// Get all workouts
 router.get("/workouts", async (req,res)=>{
     try{
         const workoutData = await db.Workout.aggregate([{
