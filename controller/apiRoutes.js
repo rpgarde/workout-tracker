@@ -2,8 +2,6 @@ const router = require('express').Router();
 const db = require('../models');
 
 // GET ALL WORKOUTS
-// TODO: Add otalDuration: lastWorkout.totalDuration,
-    //   numExercises: lastWorkout.exercises.length,
 
 router.get("/workouts", async (req,res)=>{
     try{
@@ -18,7 +16,7 @@ router.get("/workouts", async (req,res)=>{
     }
 })
 
-// ADD EXERCISE BY ID - Working!
+// Add an exercise within a workout id
 router.put("/workouts/:id", async (req,res)=>{
     try{
         console.log(req.body)
@@ -38,7 +36,7 @@ router.put("/workouts/:id", async (req,res)=>{
     }
 })
 
-// ADD NEW WORKOUT
+// Add a new workout
 router.post("/workouts", async (req,res)=>{
     try{
         const workoutData = await db.Workout.create({});
@@ -49,10 +47,15 @@ router.post("/workouts", async (req,res)=>{
     }
 })
 
-// GET WORKOUTS IN RANGE - TODO
+// Get the last 7 workouts
 router.get("/workouts/range", async (req,res)=>{
     try{
-        const workoutData = await db.Workout.find().sort({day:-1}).limit(7);
+        const workoutData = await db.Workout.aggregate([{
+            $addFields:{
+                totalDuration:{$sum:"$exercises.duration"}
+                }
+            }])
+            .skip(await db.Workout.count() - 7)
         console.log(workoutData)
         res.status(200).json(workoutData)
     } catch(err){
